@@ -1,0 +1,11 @@
+(set-info :notes | Converted from SMT-LIBv1 to v2 by MathSAT 5.5.4. |)
+(set-option :produce-models true)
+
+(declare-fun cost () Real)
+(declare-fun x_345 () Real)
+(assert (let ((.def_12 (= cost x_345)))
+.def_12))
+(minimize cost)
+(check-sat)
+(get-objectives)
+(exit)
