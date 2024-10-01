@@ -34,20 +34,14 @@ for mod_file in "$MOD_DIR"/*; do
 
   sed '/solve;/d; /display[[:space:]].*;/d' "$mod_file" >"$tmp_mod_file"
 
-  # echo "option nl_comments 1;" >>"$tmp_mod_file"
-
-  #cat $tmp_mod_file
-
-  #echo "Running $AMPL_BIN" "-og$nl_file" "$tmp_mod_file"
-
   "$AMPL_BIN" "-og$nl_file" "$tmp_mod_file"
 
-  #cat $nl_file.nl
-
-  #echo "Running $AMPL_TO_OMT_BIN" "$nl_file.nl" "$smt2_file"
-
   "$AMPL_TO_OMT_BIN" "$nl_file.nl" "$smt2_file"
-  #echo "Converted to $smt2_file"
+
+  if ! grep -q "assert" "$smt2_file"; then
+    echo "Skipping unconstrained problem: $base_name"
+    rm "$smt2_file"
+  fi
 done
 
 # rm -r "$TMP_DIR"
