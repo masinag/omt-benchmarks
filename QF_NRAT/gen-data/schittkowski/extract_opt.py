@@ -17,7 +17,7 @@ def extract_opt(filename: str) -> dict[int, np.float64]:
 
     with open(filename, 'r') as file:
         for line in file:
-            match = re.match(r"^\s*(\d+) &\s*\d+ &\s*\d+ &\s*\d+ &\s*\d+ &\s*\d+&\s*\d+ &\s*\d+ &\s*([\d\.\-E\+]+)",
+\            match = re.match(r"^\s*(\d+) &\s*\d+ &\s*\d+ &\s*\d+ &\s*\d+ &\s*\d+&\s*\d+ &\s*\d+ &\s*(-?\d\.\d+E[+-]\d+)",
                              line)
             if match:
                 test_number = int(match.group(1))
