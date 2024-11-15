@@ -12,10 +12,14 @@ tar:
 	@echo "Creating archive file of the benchmarks..."
 	@find QF_LRA -type f \( -name "README.md" -o -name "*.smt2" \) ! -path "QF_LRA/gen-data/*" -print0 | \
 		tar --null -cvf - --files-from=- | zstd --threads=0 -o $(ARCHIVE)
+	@find QF_NRAT -type f \( -name "README.md" -o -name "*.smt2" \) ! -path "QF_NRAT/gen-data/*" -print0 | \
+		tar --null -cvf - --files-from=- | zstd --threads=0 -o $(ARCHIVE)
 clean:
 	@echo "Cleaning all generated files..."
 	$(MAKE) -C QF_LRA clean
 	@rm -f QF_LRA.zip
+	$(MAKE) -C QF_NRAT clean
+	@rm -f QF_NRAT.zip
 
 help:
 	@echo "Available targets:"
