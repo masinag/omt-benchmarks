@@ -6,7 +6,7 @@ all: help
 
 generate:
 	@echo "Generating all benchmarks..."
-	#$(MAKE) -C QF_LRA generate
+	$(MAKE) -C QF_LRA generate
 	$(MAKE) -C QF_NRAT generate $(if $(AMPL_BIN),AMPL_BIN=$(AMPL_BIN)) \
  								$(if $(AMPL2OMT_BIN),AMPL2OMT_BIN=$(AMPL2OMT_BIN))
 
