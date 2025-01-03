@@ -1,11 +1,13 @@
 .PHONY: all generate clean help
 
-STATUS_FILE=.status
 # path to the directory containing this Makefile
 BASE_DIR=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+
+STATUS_FILE=.status
 ARCHIVE=QF_NRAT.tar.zst
-AMPL_BIN ?=ampl
-AMPL2OMT_BIN ?=ampl2omt
+AMPL_BIN ?= ampl
+AMPL2OMT_BIN ?= ampl2omt
+DOWNLOADS_DIR ?= $(BASE_DIR)/downloads
 
 all: help
 
@@ -14,8 +16,8 @@ generate: save-status
 		echo "Warning: Using default paths for AMPL_BIN and AMPL2OMT_BIN."; \
 		echo "These can be set by running make generate AMPL_BIN=<path_to_ampl> AMPL2OMT_BIN=<path_to_ampl2omt>"; \
 	fi
-	@echo "Generating benchmarks in QF_NRA..."
-	@bash gen-data/schittkowski/generate.sh "$(AMPL_BIN)" "$(AMPL2OMT_BIN)" "$(BASE_DIR)/single-obj" "$(BASE_DIR)/multi-obj"
+	@echo "Generating benchmarks in QF_NRAT..."
+	@bash gen-data/schittkowski/generate.sh "$(DOWNLOADS_DIR)" "$(AMPL_BIN)" "$(AMPL2OMT_BIN)" "$(BASE_DIR)/single-obj" "$(BASE_DIR)/multi-obj"
 
 save-status:
 	@echo "Saving the status of the current directory..."

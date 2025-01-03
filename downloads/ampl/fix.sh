@@ -2,8 +2,10 @@
 
 DIR_BASE="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
+FILES_DIR=$DIR_BASE
+
 # FIX hs112.mod
-HS112_FILE="${DIR_BASE}/ampl_files/hs/hs112.mod"
+HS112_FILE="${FILES_DIR}/hs/hs112.mod"
 echo "Fixing ${HS112_FILE}..."
 if grep -q "x[4] + 2*x[5] + x[6] + x[7] = 1;" "$HS112_FILE"; then
     sed -i 's/x[4] + 2*x[5] + x[6] + x[7] = 1;/x[4] + 2*x[5] + x[6] + x[7] = 0;/' "$HS112_FILE"
@@ -13,7 +15,7 @@ else
 fi
 
 # FIX s254.mod
-S254_FILE="${DIR_BASE}/ampl_files/s/s254.mod"
+S254_FILE="${FILES_DIR}/s/s254.mod"
 echo "Fixing ${S254_FILE}..."
 
 if ! grep -q "x[3] >= 1" "$S254_FILE"; then

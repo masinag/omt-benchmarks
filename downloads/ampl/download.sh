@@ -1,7 +1,11 @@
 #!/bin/bash
-DIR_BASE="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-HS_DIR=$DIR_BASE/ampl_files/hs
-S_DIR=$DIR_BASE/ampl_files/s
+
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+
+DOWNLOADS_DIR=$BASE_DIR
+
+HS_DIR=$DOWNLOADS_DIR/hs
+S_DIR=$DOWNLOADS_DIR/s
 
 mkdir -p $HS_DIR
 mkdir -p $S_DIR

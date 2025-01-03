@@ -45,7 +45,7 @@ else
   exit
 fi
 
-TMP_DIR="$DIR_BASE/ampl_files/tmp"
+TMP_DIR="$DIR_BASE/tmp"
 mkdir -p "$OUT_DIR"
 mkdir -p "$TMP_DIR"
 
@@ -69,4 +69,4 @@ for mod_file in "$MOD_DIR"/*; do
   fi
 done
 
-# rm -r "$TMP_DIR"
+rm -r "$TMP_DIR"
