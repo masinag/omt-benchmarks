@@ -3,9 +3,8 @@
 This directory contains a script to generate SMT2 files for the Schittkowski
 
 ## Requirements
-
-- Download and compile the [ampl2omt tool](https://github.com/masinag/ampl2omt). Put the executable in this directory,
-  or update the path in the convert script.
+- Install the [AMPL](https://ampl.com/) modeling language. The tool is used to compile the AMPL files to NL format.
+- Download and compile the [ampl2omt tool](https://github.com/masinag/ampl2omt). The tool is used to convert the AMPL files to SMT2 files.
 
 ## Content
 

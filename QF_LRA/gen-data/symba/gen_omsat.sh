@@ -1,6 +1,4 @@
-#!/bin/bash
-
-# Configuration
+#!/usr/bin/env bash
 
 SRC_DIR=${1}
 DST_DIR_SO=${2}

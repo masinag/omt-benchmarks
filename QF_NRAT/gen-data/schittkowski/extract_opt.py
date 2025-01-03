@@ -3,8 +3,8 @@ Extract the optimal values from the .tex file.
 To be run after generating the .smt2 files.
 
 """
-import os
 import csv
+import os
 import re
 
 import numpy as np
@@ -17,8 +17,9 @@ def extract_opt(filename: str) -> dict[int, np.float64]:
 
     with open(filename, 'r') as file:
         for line in file:
-            match = re.match(r"^\s*(\d+) &\s*\d+ &\s*\d+ &\s*\d+ &\s*\d+ &\s*\d+&\s*\d+ &\s*\d+ &\s*(-?\d\.\d+E[+-]\d+|[+-]Infinity)",
-                             line)
+            match = re.match(
+                r"^\s*(\d+) &\s*\d+ &\s*\d+ &\s*\d+ &\s*\d+ &\s*\d+&\s*\d+ &\s*\d+ &\s*(-?\d\.\d+E[+-]\d+|[+-]Infinity)",
+                line)
             if match:
                 test_number = int(match.group(1))
                 opt = np.float64(match.group(2))
@@ -81,7 +82,6 @@ def main():
         writer.writerow(["file", "opt"])
         for f, opt in file_to_opt.items():
             writer.writerow([f, opt])
-
 
 
 if __name__ == '__main__':
