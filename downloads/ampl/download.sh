@@ -16,7 +16,7 @@ base_url_s="https://vanderbei.princeton.edu/ampl/nlmodels/s"
 download_file() {
   url=$1
   dest=$2
-  wget -q --show-progress --no-check-certificate -nc --directory-prefix="$dest" "$url" || echo "File not found: $url"
+  curl --insecure -C - -O --output-dir "$dest" "$url" || echo "File not found: $url"
 }
 
 for i in $(seq -w 1 119); do
