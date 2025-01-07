@@ -1,6 +1,5 @@
 .PHONY: all generate help
 
-STATUS_FILE=.status
 # path to the directory containing this Makefile
 BASE_DIR=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 

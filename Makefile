@@ -8,16 +8,17 @@ all: help
 generate:
 	@echo "Generating all benchmarks..."
 	$(MAKE) -C QF_LRA generate DOWNLOADS_DIR=$(DOWNLOADS_DIR)
+	$(MAKE) -C QF_LIA generate DOWNLOADS_DIR=$(DOWNLOADS_DIR)
 	$(MAKE) -C QF_NRAT generate DOWNLOADS_DIR=$(DOWNLOADS_DIR) \
 								$(if $(AMPL_BIN),AMPL_BIN=$(AMPL_BIN)) \
  								$(if $(AMPL2OMT_BIN),AMPL2OMT_BIN=$(AMPL2OMT_BIN))
 
 tar:
 	@echo "Creating archive file of the benchmarks..."
-	@find QF_LRA -type f \( -name "README.md" -o -name "*.smt2" \) ! -path "QF_LRA/gen-data/*" -print0 | \
-		tar --null -cvf - --files-from=- | zstd --threads=0 -o QF_LRA.tar.zst
-	@find QF_NRAT -type f \( -name "README.md" -o -name "*.smt2" \) ! -path "QF_NRAT/gen-data/*" -print0 | \
-		tar --null -cvf - --files-from=- | zstd --threads=0 -o QF_NRAT.tar.zst
+	@for dir in QF_LRA QF_LIA QF_NRAT; do \
+		find $$dir -type f \( -name "README.md" -o -name "*.smt2" \) ! -path "$$dir/gen-data/*" -print0 | \
+		tar --null -cvf - --files-from=- | zstd --threads=0 -o $$dir.tar.zst; \
+	done
 
 help:
 	@echo "Available targets:"

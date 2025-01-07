@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ $# -ne 3 ]]; then
-  echo "Usage: <src-dir> <output-dir-single-objective> <output-dir-multi-objective>" 1>&2
+  echo "Usage: $0 <src-dir> <output-dir-single-objective> <output-dir-multi-objective>" 1>&2
   exit
 fi
 

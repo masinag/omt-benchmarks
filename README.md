@@ -5,4 +5,5 @@ These include single-objective and multi-objective, incremental and non-incrment
 
 Currently, benchmarks are available for the following theories:
 - QF_LRA
+- QF_LIA
 - QF_NRAT

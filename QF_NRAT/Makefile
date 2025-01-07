@@ -2,7 +2,6 @@ BASE_DIR=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 SINGLE_OBJ_DIR=$(BASE_DIR)/single-obj
 MULTI_OBJ_DIR=$(BASE_DIR)/multi-obj
 
-STATUS_FILE=.status
 ARCHIVE=QF_NRAT.tar.zst
 AMPL_BIN ?= ampl
 AMPL2OMT_BIN ?= ampl2omt
