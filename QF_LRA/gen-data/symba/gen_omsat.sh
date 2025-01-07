@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
+if [[ $# -ne 3 ]]; then
+  echo "Usage: <src-dir> <output-dir-single-objective> <output-dir-multi-objective>" 1>&2
+  exit
+fi
+
 SRC_DIR=${1}
 DST_DIR_SO=${2}
 DST_DIR_MO=${3}
-SRC_REG='.smt2' # regexp 4 files of interest
+
+SRC_REG='.smt2' # regexp for files of interest
 OBJECTIVE_PATTERN="^v"
 CAT1="box"
 CAT2="inc"
@@ -154,12 +160,5 @@ function apply_rec() {
   popd 1>/dev/null || exit
 }
 
-#
-## MAIN
-#
-if [[ $# -ne 3 ]]; then
-  echo "Usage: $0 <source-dir> <output-dir-single-objective> <output-dir-multi-objective>" 1>&2
-  exit
-fi
 dirs -c
 apply_rec "${SRC_DIR}"
